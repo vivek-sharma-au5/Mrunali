@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "fd33d548-6e07-411f-9a35-4b8adb01bf6a",
+		"name": "WeatherAppAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9693851"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Latitude is equals to 51.51\",function(){\r",
+							"    pm.expect(pm.response.json().coord.lat).to.eql(51.51);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Longitude is equals to 51.51\",function(){\r",
+							"    pm.expect(pm.response.json().coord.lon).to.eql(-0.13);\r",
+							"});\r",
+							"\r",
+							"// Test case 1: Verify the response status code is 200\r",
+							"pm.test(\"Verify that wind speed is 4.1\", function () {\r",
+							"\t pm.expect(pm.response.json().wind.speed).to.eql(4.1);\r",
+							"});\r",
+							"\r",
+							"// Test case 2: Verify the weather description contains a specific keyword\r",
+							"pm.test(\"Verify that humidity is 81\", function () {\r",
+							"\t pm.expect(pm.response.json().main.humidity).to.eql(81);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that city name is London\", function () {\r",
+							"\t pm.expect(pm.response.json().name).to.eql(\"London\");\r",
+							"});\r",
+							"\r",
+							"// Test case 3: Verify the temperature is within a specific range\r",
+							"pm.test(\"Verify the Temperature is between the range 250 to 300\", function () {\r",
+							"    var temperature=pm.response.json().main.temp;\r",
+							"    pm.expect(temperature).to.be.within(250,300);\r",
+							"\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6 907d289e10d714a6e88b30761fae22. ",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "London,uk"
+						},
+						{
+							"key": "appid",
+							"value": "b6 907d289e10d714a6e88b30761fae22. "
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
